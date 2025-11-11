@@ -3,45 +3,67 @@
 <head>
   <meta charset="utf-8">
   <style>
-    body { width: 400px; padding: 20px; font-family: Arial, sans-serif; }
-    .status { padding: 10px; border-radius: 5px; margin: 10px 0; }
-    .connected { background: #e8f5e8; color: #2e7d32; }
-    .disconnected { background: #ffebee; color: #c62828; }
-    button { width: 100%; padding: 10px; margin: 5px 0; border: none; border-radius: 5px; cursor: pointer; }
+    body { 
+      width: 350px; 
+      padding: 15px; 
+      font-family: Arial, sans-serif; 
+      margin: 0;
+    }
+    .status { 
+      padding: 10px; 
+      border-radius: 5px; 
+      margin: 10px 0; 
+      text-align: center;
+    }
+    .connected { background: #e8f5e8; color: #2e7d32; border: 1px solid #c8e6c9; }
+    .disconnected { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+    button { 
+      width: 100%; 
+      padding: 10px; 
+      margin: 5px 0; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer; 
+    }
     .btn-primary { background: #1976d2; color: white; }
-    .btn-secondary { background: #f5f5f5; color: #333; }
-    .migration-option { border: 1px solid #ddd; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    .btn-secondary { background: #f5f5f5; color: #333; border: 1px solid #ddd; }
+    .btn-success { background: #25D366; color: white; }
+    .section { margin: 15px 0; }
+    input { 
+      width: 100%; 
+      padding: 8px; 
+      margin: 5px 0; 
+      border: 1px solid #ddd; 
+      border-radius: 5px; 
+      box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
-  <h3>🔄 WhatsApp Migration</h3>
+  <h3 style="margin: 0 0 15px 0; text-align: center;">🔄 WhatsApp Migration</h3>
   
   <div id="status" class="status">
     Chargement...
   </div>
 
   <div id="auth-section" style="display: none;">
-    <input type="tel" id="phoneNumber" placeholder="+33612345678" style="width: 100%; padding: 8px; margin: 5px 0;">
-    <button id="verifyBtn" class="btn-primary">Vérifier le numéro</button>
+    <div class="section">
+      <input type="tel" id="phoneNumber" placeholder="+243894697490">
+      <button id="verifyBtn" class="btn-primary">Vérifier le numéro</button>
+    </div>
   </div>
 
   <div id="migration-section" style="display: none;">
-    <div class="migration-option">
-      <h4>📱 Migration Complète</h4>
-      <p>Transfert conversations, contacts et médias</p>
-      <button id="startMigration" class="btn-primary">Démarrer la Migration</button>
+    <div class="section">
+      <button id="startBackup" class="btn-success">💾 Sauvegarder Maintenant</button>
     </div>
-
-    <div class="migration-option">
-      <h4>📋 Export Manuel</h4>
-      <p>Exporter pour reconstruction manuelle</p>
-      <button id="exportData" class="btn-secondary">Exporter les Données</button>
+    
+    <div class="section">
+      <button id="startMigration" class="btn-primary">🔄 Démarrer une Migration</button>
     </div>
-
-    <div id="active-migration" style="display: none;">
-      <h4>🔄 Migration en Cours</h4>
-      <div id="migration-progress"></div>
-      <button id="viewDetails" class="btn-secondary">Voir Détails</button>
+    
+    <div class="section">
+      <button id="exportData" class="btn-secondary">📤 Exporter les Données</button>
     </div>
   </div>
 
