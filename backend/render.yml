@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: whatsapp-migration-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        fromDatabase:
+          name: supabase-creds
+          property: url
+      - key: SUPABASE_ANON_KEY
+        fromDatabase:
+          name: supabase-creds
+          property: key
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: ADMIN_PHONE_NUMBER
+        value: "+243894697490"  # VOTRE NUMÉRO
+      - key: ALLOWED_MIGRATIONS
+        value: '[{"from": "+243894697490", "to": "+243982730192"}]'
+
+databases:
+  - name: supabase-creds
+    plan: free

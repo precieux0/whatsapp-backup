@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Migration Assistant",
+  "version": "2.0.0",
+  "description": "Sauvegarde et migration entre numéros WhatsApp",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*",
+    "https://*.render.com/*",
+    "https://*.supabase.co/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": [
+        "js/auth.js",
+        "js/content.js", 
+        "js/migration-ui.js"
+      ],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "WhatsApp Migration"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "web_accessible_resources": [{
+    "resources": ["migration-dashboard.html"],
+    "matches": ["https://web.whatsapp.com/*"]
+  }]
+}
